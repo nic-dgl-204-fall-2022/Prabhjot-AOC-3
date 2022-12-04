@@ -158,6 +158,21 @@ Before updating this method, I used a single variable to do all the operations f
                  programsChar = (finalSlicedPart + startingSlicedPart).toMutableList()
                        }
 
+## Reflection
+
+The problem I chose this time was easy to understand but challenging to implement. It was basically lies in the category of not too much easy and not too much hard problems but part 2 requires us to think a little out of the box because for part one, you have the problem and you start think around it, like of creating the three functions according to the conditions or restrictions given but for part you have just think that how you going to implement the one billion iterations in the program because as one can see that I had not added that much code for the part 2 but it forced me to find out a better and good solution. If I would have used the part 1 code to do the 1 billion iterations it would be a disaster because 1 iteration was taking around 9 millisecond and to reach 1 billion iterations it could have costed almost 2-3 months. Therefore, to approach second solution I took time for one to two days and get back on it with refreshing mind. 
+
+**How long did I take to find a complete solution?**
+
+I coded for about 8-9 hours to solve the problem. And to complete the readme file, adding code to repo, second solution and refactoring took almost 15 hours.
+
+**What documentation and resources did I use to identify my solution?**
+
+This time I did not look up to much of the documentations and blogs as for this problem my prior knowledge of programming was needed.
+
+**Did I use a good commit process (i.e., commit stable codon a regular basis?)**
+
+By learning from the past two AOCs and assignments I had learnt the process of committing and so I can say that this repo do has the best commit process but still I will always look for improving and learning. 
 
 
 
