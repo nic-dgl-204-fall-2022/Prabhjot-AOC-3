@@ -33,7 +33,7 @@ fun main() {
         }
         if (programsChar == copyingProgChar) {
             val iterationFactor = iterations / i
-            i = i * iterationFactor
+            i = i.times(iterationFactor)
         }
         i++
     }
@@ -43,9 +43,10 @@ fun main() {
 
 fun spinDanceMove(positionNumber: Int) {
 
-    programsChar = ((programsChar.slice((programsChar.size - positionNumber) until programsChar.size))
-            +
-            (programsChar.slice(0 until (programsChar.size - positionNumber)))).toMutableList()
+    val indexSpinDanceMove = programsChar.size - positionNumber
+    val finalSlicedPart = programsChar.slice(indexSpinDanceMove until programsChar.size)
+    val startingSlicedPart = programsChar.slice(0 until indexSpinDanceMove)
+    programsChar = (finalSlicedPart + startingSlicedPart).toMutableList()
 }
 
 fun exchangeDanceMove(firstPosition: Int, secondPosition: Int) {
