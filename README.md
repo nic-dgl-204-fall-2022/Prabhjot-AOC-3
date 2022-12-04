@@ -31,5 +31,42 @@ We have to update the ```programsChar``` so we added both sliced part in such a 
                       programsChar.slice(0 until (programsChar.size positionNumber)))).toMutableList()
                                 }
 
+The ```exchangeDanceMove``` method had two parameters ```firstPosition``` and ```secondPosition ```parameters with Int datatypes. We will be required these two positions for ```programChar``` as the objective of creating this function is to simply exchange two ```programsChar``` at positions. To achieve this I first created a temp variable and stored the ```programsChar``` at first position. Then, in the next line I assigned the value of second position char to first position char and in third line we got real first position’s value in second position from that temp variable. 
+
+
+          fun exchangeDanceMove(firstPosition: Int, secondPosition: Int) {
+               val tempVariable = programsChar[firstPosition]
+               programsChar[firstPosition] = programsChar[secondPosition]
+               programsChar[secondPosition] = tempVariable
+                  }
+
+The ```partnerDanceMove``` method has two parameters ```firstProgChar``` and ```secondProgChar``` with Char datatypes. We will be required these two chars to exchange their positions as the aim of this function is to exchange or swap the ```programsChar```. So in ```exchangeDanceMove``` function we were swapping at positions while here in ```partnerDanceMove``` we will be swapping at characters. To do this we got the ```firstProgChar``` and ```SecondProgChar``` to swap them. Therefore, we are first getting their positions using ```indexOf``` property of the mutable list (as the ```programChar``` is an ```mutableList```). After, getting those positions we will call our ```exchangeDanceMove``` function and put the positions we got, in it. 
+
+          fun partnerDanceMove(firstProgChar: Char, SecondProgChar: Char) {
+              val firstPosition = programsChar.indexOf(firstProgChar)
+              val secondPosition = programsChar.indexOf(SecondProgChar)
+                exchangeDanceMove(firstPosition, secondPosition)
+                       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
