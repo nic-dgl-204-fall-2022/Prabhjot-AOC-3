@@ -126,7 +126,37 @@ Further we used the an if condition inside the loop to check if we get the value
            i++
               }
 
+## Refactoring 
 
+
+**Added ```var``` instead of ```val```-**
+
+As we knew it that immutable keyword used against those variable whose value will not change in the entire program but at the time of implementing the second solution we had to change the value of the ```i``` to get the ```iterationFactor``` and to multiply the ```i``` with the number of times we are iterating the program
+
+            var i = 1 
+
+
+**Updated Multiplicative variable**
+
+In second solution we used the older way to multiply a variable with other variable and assigned to the ```i``` variable. But I found the ```.times``` property of the int type variable which can be used to multiply two variables.
+
+             if (programsChar == copyingProgChar) {
+                 val iterationFactor = iterations / i
+                  i = i.times(iterationFactor)
+                          }
+
+
+**Edited ```spinDanceMove``` method**
+
+Before updating this method, I used a single variable to do all the operations for this method. The objective of this function was to move the programs character from end to front so we have to first divide the programs standing in the line (like s2 on ```abcde``` produces ```deabc```, here ```abcde``` should be divided into ```abc``` and de```).  Each and every thing is explained above and only thing I did is I added some variables to make the code more readable and clearer.
+
+           fun spinDanceMove(positionNumber: Int) {
+
+               val indexSpinDanceMove = programsChar.size - positionNumber
+               val finalSlicedPart = programsChar.slice(indexSpinDanceMove until programsChar.size)
+               val startingSlicedPart = programsChar.slice(0 until indexSpinDanceMove)
+                 programsChar = (finalSlicedPart + startingSlicedPart).toMutableList()
+                       }
 
 
 
