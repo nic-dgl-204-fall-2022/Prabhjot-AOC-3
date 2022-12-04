@@ -48,6 +48,42 @@ The ```partnerDanceMove``` method has two parameters ```firstProgChar``` and ```
                 exchangeDanceMove(firstPosition, secondPosition)
                        }
 
+Now, in the main function we will use three of those functions to achieve our goal of running the dance through once with all of the dance moves. To read the moves in, we are taking user input first with the variable ```stringInput``` and in the variable orders we are splitting all the strings characters from each other with a ```,``` .
+            
+             print("Enter input: ")
+                val stringInput = readLine() ?: "
+                val orders = stringInput.split(",")
+
+Further, we created a ```forEach``` loop with ```orders``` variable and then using the ```when- else``` blocks to perform our dance move functions. In the when-else block there will be three conditions with ```s, x and p``` to implement three of the dance move functions. Whenever the order reaches to ```s``` the ```spinDanceMove``` function will be implemented as it requires ```positonNumber``` of the ```charProgram``` which will be moved from end to front.
+
+Whenever the order reaches to ```x``` the ```exchangeDanceMove``` function will be implemented to exchange two positions of the chars. As it required the positions as parameters, we will be getting the positions with the help of the ```orderExchangeKey``` which we get by splitting the order with ```/```.  With order we are getting the character on the other hand we require their position number for ```exchangeDanceMove```.
+
+Whenever the order reaches to ```p``` the ```partnerDanceMove``` function will be implemented to swap two ```programsChar```. ```partnerDanceMove``` function do not requires the positions so we can simply provide it the characters from using the ```order[-]```.
+
+  
+           orders.forEach { order ->
+	        when (order[0]) {
+	            's' -> spinDanceMove(Integer.parseInt(order.slice(1 until order.length)))
+	            'x' -> {
+	                val orderExchangeKey = order.split("/")
+	                val firstPosition =
+	                    Integer.parseInt(orderExchangeKey[0].slice(1 until orderExchangeKey[0].length))
+	                val secondPosition = Integer.parseInt(orderExchangeKey[1])
+	                exchangeDanceMove(firstPosition, secondPosition)
+	            }
+	            'p' -> partnerDanceMove(order[1], order[3])
+	            else -> println("This $order is not known.")
+	        }
+	    }
+
+As we are iterating for one time only we will use a variable ```i``` and will initialize it with 1. At the end we have to combine the sliced string into a single word. And to do so we are using the ```joinString``` property of the ```mutableList programsChar```. Lastly, we are printing our result.
+
+
+         if(i==1){
+	        val stringFromPrograms = programsChar.joinToString("")
+	        println("So, answer is: $stringFromPrograms")
+	    }
+
 
 
 
