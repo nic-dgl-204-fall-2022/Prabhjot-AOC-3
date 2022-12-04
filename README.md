@@ -85,6 +85,49 @@ As we are iterating for one time only we will use a variable ```i``` and will in
 	    }
 
 
+## Second Solution 
+
+The question further says that you watch the dance for a while and record their dance moves ( which is our puzzle input) so after that, we have to find in what order the programs will be standing after their completion of that dance. By keeping the positions they finished in the their previous dance, the programs will be keep performing again and again. Total one billion iteration will take to complete it or to the eventual sequence.
+
+To achieve this we created two variables in which first is ```iterations``` in which we are storing ```1_000_000_000``` to perform the dance for one billion times and second is ```copyingProgChar``` which will contain the copy of the our ```programsChar```.
+
+
+          val iterations = 1_000_000_000
+
+          val copyingProgChar = programsChar.toList()
+	  
+Now, we will be using while loop to run the program till ```1000000000``` iterations. The loop should be having the condition of not iterating more then the one billion times. Therefore, to apply that we simply used ```(i <= iterations)```  and added ```i++``` at the end of the while loop to update it. 
+
+Further we used the an if condition inside the loop to check if we get the values of ```programsChar ```equal to the ```copyingProgChar```.
+
+            while (i <= iterations) {
+             orders.forEach { order ->
+                  when (order[0]) {
+            's' -> spinDanceMove(Integer.parseInt(order.slice(1 until order.length)))
+            'x' -> {
+                val orderExchangeKey = order.split("/")
+                val firstPosition =
+                    Integer.parseInt(orderExchangeKey[0].slice(1 until orderExchangeKey[0].length))
+                val secondPosition = Integer.parseInt(orderExchangeKey[1])
+                exchangeDanceMove(firstPosition, secondPosition)
+            }
+            'p' -> partnerDanceMove(order[1], order[3])
+            else -> println("This $order is not known.")
+                         }
+                     }
+             if (i == 1) {
+               val stringFromPrograms = programsChar.joinToString("")
+               println("First Part's result- $stringFromPrograms")
+             }
+         if (programsChar == copyingProgChar) {
+        val iterationFactor = iterations / i
+        i = i * iterationFactor
+         }
+           i++
+              }
+
+
+
 
 
 
