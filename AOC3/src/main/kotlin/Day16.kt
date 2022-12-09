@@ -15,19 +15,16 @@ fun main() {
     while (i <= iterations) {
         orders.forEach { order ->
             when (order[0]) {
-                's' -> spinDanceMove(Integer.parseInt(order.slice(1 until order.length)))
+                's' -> spinDanceMove(order.drop(1).toInt())
                 'x' -> {
-                    val orderExchangeKey = order.split("/")
-                    val firstPosition =
-                        Integer.parseInt(orderExchangeKey[0].slice(1 until orderExchangeKey[0].length))
-                    val secondPosition = Integer.parseInt(orderExchangeKey[1])
+                    val (firstPosition, secondPosition) = order.drop(1).split("/").map { it.toInt() }
                     exchangeDanceMove(firstPosition, secondPosition)
                 }
                 'p' -> partnerDanceMove(order[1], order[3])
                 else -> println("This $order is not known.")
             }
         }
-        if (i == 1) {
+        if (i == 1) { //
             val stringFromPrograms = programsChar.joinToString("")
             println("First Part's result- $stringFromPrograms")
         }
@@ -43,9 +40,8 @@ fun main() {
 
 fun spinDanceMove(positionNumber: Int) {
 
-    val indexSpinDanceMove = programsChar.size - positionNumber
-    val finalSlicedPart = programsChar.slice(indexSpinDanceMove until programsChar.size)
-    val startingSlicedPart = programsChar.slice(0 until indexSpinDanceMove)
+    val finalSlicedPart = programsChar.takeLast(positionNumber)
+    val startingSlicedPart = programsChar.take(programsChar.size - positionNumber)
     programsChar = (finalSlicedPart + startingSlicedPart).toMutableList()
 }
 
